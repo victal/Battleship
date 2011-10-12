@@ -16,10 +16,10 @@ public class Encrypter {
         md.update(str.getBytes());
         return md.digest();
     }
-    private static byteArrayToHexString(byte[] ba){
-        String s = ""
+    private static String byteArrayToHexString(byte[] ba){
+        String s = "";
         for(byte b:ba){
-            s+=b&0xff<16 ? "0" : Integer.toHexString(b&0xff);
+            s+= (b & 0xff) < 16 ? "0" : Integer.toHexString(b&0xff);
         }
         return s;
     }

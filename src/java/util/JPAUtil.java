@@ -13,7 +13,7 @@ import javax.persistence.Persistence;
  * @author guilherme
  */
 public class JPAUtil {
-    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("EnquetePU");
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("BattleshipPU");
     public static EntityManager getEntityManager(){
         return emf.createEntityManager();
     }

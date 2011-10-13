@@ -9,12 +9,20 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Encrypter {
     public static String hashify(String str) throws NoSuchAlgorithmException{
-        return byteArrayToHexString(computeHash(str));
+        byte[] hash = computeHash(str);
+        if(hash==null) return null;
+        return byteArrayToHexString(hash);
     }
-    private static byte[] computeHash(String str) throws NoSuchAlgorithmException{
-        MessageDigest md = MessageDigest.getInstance("SHA-1");
-        md.update(str.getBytes());
-        return md.digest();
+    private static byte[] computeHash(String str) throws NoSuchAlgorithmException {
+        //try{
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            md.update(str.getBytes());
+            return md.digest();
+        //}
+//        catch(NoSuchAlgorithmException e){
+//            e.printStackTrace();
+//            return null;
+//        }
     }
     private static String byteArrayToHexString(byte[] ba){
         String s = "";

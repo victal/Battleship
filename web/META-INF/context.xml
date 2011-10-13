@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/Battleship"/>
+<Context antiJARLocking="true" path="/Battleship">
+  <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="comp13server" password="xupafolgado" type="javax.sql.DataSource" url="jdbc:postgresql://comp13.server:5432/BattleshipDB" username="comp13"/>
+</Context>

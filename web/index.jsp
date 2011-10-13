@@ -13,5 +13,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <jsp:include page="listausuarios.jsp">
+            <jsp:param name="name" value="value"/>
+        </jsp:include>
     </body>
 </html>

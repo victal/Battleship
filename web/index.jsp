@@ -16,15 +16,15 @@
         <jsp:include page="login.jsp">
             <jsp:param name="name" value="value"/>
         </jsp:include>
-        <script src="http://www.java.com/js/deployJava.js"></script>
-        <!--<script> 
+        <!--<script src="http://www.java.com/js/deployJava.js"></script>
+        <script> 
             var attributes = { code:'applet.TestApplet',  width:300, height:300} ; 
             var parameters = {jnlp_href: 'TestJnlp.jnlp'} ; 
             deployJava.runApplet(attributes, parameters, '1.6'); 
         </script>-->
-        <applet code="applet.TestApplet" archive="TestApplet.jar" width="600" height="480"></applet>
         <%--<jsp:include page="/listausuarios">
             <jsp:param name="name" value="value"/>
         </jsp:include>--%>
+        <a href="appletdev.jsp" >Current Applet</a>
     </body>
 </html>

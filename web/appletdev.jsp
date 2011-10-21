@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Current Applet</h1>
-                <applet code="applet.TestApplet" archive="TestApplet.jar" width="600" height="480"></applet>
+         <applet code="applet.TestApplet" archive="TestApplet.jar" width="600" height="480"></applet>
     </body>
 </html>

@@ -55,9 +55,10 @@ public class TestApplet extends Applet {
         
 //        for(int i =0;i<getWidth() - 1;i+=30){
 //            g.setColor(Color.RED);
-            Image image = new ImageIcon(this.getClass().getResource("images/commented.png")).getImage();
+            Image image = getImage(getDocumentBase(),"commented.png");
+            g.drawString(getDocumentBase().toString(),5,15);
 //            g.drawLine(i, 0, i, getHeight()-1);
-            g.drawImage(image, 0,0,image.getWidth(null),image.getHeight(null), null);
+            //g.drawImage(image, 0,0,image.getWidth(null),image.getHeight(null), null);
 //        }
 
 	//Draw the current string inside the rectangle.

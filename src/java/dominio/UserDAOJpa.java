@@ -38,7 +38,7 @@ public class UserDAOJpa {
                 em.close();
             }
             //em.close();
-        
+      
         }
     }
 
@@ -61,7 +61,7 @@ public class UserDAOJpa {
         return q.getResultList();
     }
 
-    private User getUserbyId(String id) {
+    public User getUserbyId(String id) {
         Query q = em.createQuery("select u from User u where u.username = :id");
         q.setParameter("id", id);
         return (User) q.getResultList().get(0);

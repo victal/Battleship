@@ -1,4 +1,7 @@
 /build/
 /dist/
 /nbproject/private/
-/test/dbtest/
+/test/dbtest/DbTeste.java
+/applets/TestApplet/build/
+/applets/TestApplet/dist/
+/applets/TestApplet/nbproject/private/

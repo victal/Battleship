@@ -13,9 +13,9 @@
     </head>
     <body>
         <h1>Current Applet</h1>
-        <jsp:plugin type="applet"  code="TestApplet.class" name="testApplet">
+        <jsp:plugin type="applet"  archive="TestApplet.jar" code="applet.TestApplet" name="testApplet">
             <jsp:fallback>Unable to load </jsp:fallback>
         </jsp:plugin>
-    <!--<applet code="applet.TestApplet">-->
+    <applet code="applet.TestApplet" archive="TestApplet.jar"></applet>
     </body>
 </html>

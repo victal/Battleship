@@ -8,8 +8,6 @@ import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,6 +16,9 @@ import javax.swing.ImageIcon;
 public class TestApplet extends Applet {
 
    StringBuffer buffer;
+   Image image1;
+   Image image2;
+   Image image3;
 
     @Override
     public void init() {
@@ -49,16 +50,18 @@ public class TestApplet extends Applet {
     @Override
     public void paint(Graphics g) {
 	//Draw a Rectangle around the applet's display area.
-//        g.fillRect(0, 0, 
-//		   getWidth() - 1,
-//		   getHeight() - 1);
+        g.drawRect(0, 0, 
+		   getWidth() - 1,
+		   getHeight() - 1);
         
 //        for(int i =0;i<getWidth() - 1;i+=30){
 //            g.setColor(Color.RED);
-            Image image = getImage(getDocumentBase(),"commented.png");
-            g.drawString(getDocumentBase().toString(),5,15);
 //            g.drawLine(i, 0, i, getHeight()-1);
-            //g.drawImage(image, 0,0,image.getWidth(null),image.getHeight(null), null);
+          g.drawString(getCodeBase().toString(),5,111);
+          g.drawString(getDocumentBase().toString(),5,222);
+            
+          
+//            g.drawImage(image4, 0,0,image1.getWidth(null),image1.getHeight(null), null);
 //        }
 
 	//Draw the current string inside the rectangle.

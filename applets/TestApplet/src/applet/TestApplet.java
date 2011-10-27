@@ -50,19 +50,23 @@ public class TestApplet extends Applet {
     @Override
     public void paint(Graphics g) {
 	//Draw a Rectangle around the applet's display area.
-        g.drawRect(0, 0, 
+        g.setColor(Color.GRAY);
+        g.fillRect(0, 0, 
 		   getWidth() - 1,
 		   getHeight() - 1);
-        
-//        for(int i =0;i<getWidth() - 1;i+=30){
-//            g.setColor(Color.RED);
-//            g.drawLine(i, 0, i, getHeight()-1);
-          g.drawString(getCodeBase().toString(),5,111);
-          g.drawString(getDocumentBase().toString(),5,222);
-            
-          
-//            g.drawImage(image4, 0,0,image1.getWidth(null),image1.getHeight(null), null);
-//        }
+        g.setColor(Color.BLACK);
+        g.fillRect(30, 30, 
+		   getWidth() - 1,
+		   getHeight() - 1);
+        g.setColor(Color.RED);
+        for(int i =1;i<getWidth() - 1;i+=30){
+           g.drawLine(i, 31, i, getHeight()-1);
+        }
+        for(int i =1;i<getHeight() - 1;i+=30){
+           g.drawLine(31, i,getWidth()-1,i);
+        }
+        //g.drawString(getCodeBase().toString(),5,111);//http://localhost/Battleship
+
 
 	//Draw the current string inside the rectangle.
         //g.drawString(buffer.toString(), 5, 15);

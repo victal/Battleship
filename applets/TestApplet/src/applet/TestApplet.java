@@ -6,6 +6,7 @@ package applet;
 
 import java.applet.Applet;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -16,10 +17,7 @@ import java.awt.Image;
 public class TestApplet extends Applet {
 
    StringBuffer buffer;
-   Image image1;
-   Image image2;
-   Image image3;
-
+   Image fundo;
     @Override
     public void init() {
         buffer = new StringBuffer();
@@ -50,21 +48,26 @@ public class TestApplet extends Applet {
     @Override
     public void paint(Graphics g) {
 	//Draw a Rectangle around the applet's display area.
+        this.setSize(800, 600);
+        fundo = getImage(getCodeBase(), "science.jpg");
+        
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, 
 		   getWidth() - 1,
 		   getHeight() - 1);
+        
         g.setColor(Color.BLACK);
         g.fillRect(30, 30, 
 		   getWidth() - 1,
 		   getHeight() - 1);
         g.setColor(Color.RED);
-        for(int i =1;i<getWidth() - 1;i+=30){
-           g.drawLine(i, 31, i, getHeight()-1);
+        for(int i =30;i<getWidth() - 1;i+=30){
+           g.drawLine(i, 30, i, getHeight()-1);
         }
-        for(int i =1;i<getHeight() - 1;i+=30){
-           g.drawLine(31, i,getWidth()-1,i);
+        for(int i =30;i<getHeight() - 1;i+=30){
+           g.drawLine(30, i,getWidth()-1,i);
         }
+        g.drawImage(fundo, 0, 0,this);
         //g.drawString(getCodeBase().toString(),5,111);//http://localhost/Battleship
 
 

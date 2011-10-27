@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -17,7 +18,7 @@ import java.awt.Image;
 public class TestApplet extends Applet {
 
    StringBuffer buffer;
-   Image fundo;
+   BufferedImage fundo;
     @Override
     public void init() {
         buffer = new StringBuffer();
@@ -49,7 +50,11 @@ public class TestApplet extends Applet {
     public void paint(Graphics g) {
 	//Draw a Rectangle around the applet's display area.
         this.setSize(800, 600);
-        fundo = getImage(getCodeBase(), "science.jpg");
+        Image img = getImage(getCodeBase(), "science.jpg");
+        fundo = new BufferedImage(img.getWidth(this),img.getHeight(this),BufferedImage.TYPE_4BYTE_ABGR);
+        Graphics gr = fundo.createGraphics();
+        gr.drawImage(img, 0,0,null);
+        gr.dispose();
         
         g.setColor(Color.GRAY);
         g.fillRect(0, 0, 

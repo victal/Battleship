@@ -2,6 +2,9 @@
 /dist/
 /nbproject/private/
 /test/dbtest/DbTeste.java
+/applets/ThreadedApplet/build/
+/applets/ThreadedApplet/dist/
+/applets/ThreadedApplet/nbproject/private/
 /applets/TestApplet/build/
 /applets/TestApplet/dist/
 /applets/TestApplet/nbproject/private/

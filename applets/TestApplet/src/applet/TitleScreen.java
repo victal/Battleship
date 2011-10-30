@@ -4,9 +4,9 @@
  */
 package applet;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Panel;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
  *
  * @author guilherme
  */
-public class TitleScreen extends Canvas{
+public class TitleScreen extends Panel{
 
     BufferedImage barco;
     int width,height;

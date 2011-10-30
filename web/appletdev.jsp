@@ -16,6 +16,9 @@
         <jsp:plugin type="applet"  archive="TestApplet.jar" code="applet.TestApplet" name="testApplet" width="800" height="600">
             <jsp:fallback>Unable to load </jsp:fallback>
         </jsp:plugin>
+        <jsp:plugin type="applet"  archive="TheadedApplet.jar" code="applet.ThreadedApplet" name="threadedApplet" width="800" height="600">
+            <jsp:fallback>Unable to load </jsp:fallback>
+        </jsp:plugin>
     <!--<applet code="applet.TestApplet" archive="TestApplet.jar"></applet>-->
     </body>
 </html>

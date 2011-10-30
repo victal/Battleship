@@ -6,7 +6,6 @@ package applet;
 
 import java.applet.Applet;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
@@ -75,28 +74,34 @@ public class ThreadedApplet extends Applet implements Runnable,ActionListener{
 
     @Override
     public void run() {
-            try {
+            //try {
                 ActiveCanvas c = new GameScreen(15,15);
                 panels.put("Game",c);
                 thisPanel.add("Game", c);
                 c = new BoatChooseScreen(this);
                 panels.put("BoatSelect",c);
                 thisPanel.add("BoatSelect", c);
-                t.sleep(1000);
-            } catch (InterruptedException ex) {
-            }
+                //t.sleep(1000);
+//            } catch (InterruptedException ex) {
+//            }
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         Object src = ae.getSource();
         String cmd = (String)ae.getActionCommand();
+        //OK -> Ir para o próximo painel,
+        //com nome especificado no ActionCommand.
         if(ae.getID()==OK){
-            panels.get(cmd).init();
+            //panels.get(cmd).init();
             cl.show(thisPanel, cmd);
         }
+        //Caso seja uma mensagem INTERNAL -> de algo interno ao canvas para o canvas
+        //Passar o "nome" do Canvas como source.
         else if(ae.getID()==INTERNAL){
-            
+            ActiveCanvas a = panels.get((String)src);
+            if(a instanceof ActionListener)
+                ((ActionListener)a).actionPerformed(new ActionEvent(src, INTERNAL, cmd));
         }
     }
 }

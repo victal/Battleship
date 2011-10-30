@@ -14,7 +14,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 
@@ -27,8 +29,9 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
     BufferedImage rarrow,larrow,gobutton;
     //HashMap<String,BufferedImage> flags;
     ArrayList<BufferedImage>flags;
-    Iterator<BufferedImage> flagIterator;
+    ListIterator<BufferedImage> flagIterator;
     BufferedImage flag;
+    String names="";
     int arrowsOffset;
     int buttonOffset;
 
@@ -45,16 +48,19 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
             try {
                 //flags.put(e.name(), ImageIO.read(new File("images/flags/"+e.name()+".png")));
                 flags.add(ImageIO.read(new File("images/flags/"+e.name()+".png")));
+                //names+=" images/flags/"+e.name()+".png ";
+                names+=e.name();
             } catch (IOException ignored) {
             }
         }
-        flagIterator = flags.iterator();
+        flagIterator = flags.listIterator();
         flag = flagIterator.next();
+        init();
     }
     @Override
     public void init() {
         this.setSize(width, height);
-        this.setBackground(Color.blue);
+        //this.setBackground(Color.blue);
         try {    
             rarrow = ImageIO.read(new File("images/flags/rightarrow.jpg"));
             larrow = ImageIO.read(new File("images/flags/leftarrow.jpg"));
@@ -77,10 +83,10 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
             public void mouseClicked(MouseEvent me) {
                 
                 if(mouseIn(getWidth()/2-arrowsOffset,getHeight()/2,larrow,me)){
-                    canvasManager.actionPerformed(new ActionEvent(this, 4, "PreviousFlag"));
+                    canvasManager.actionPerformed(new ActionEvent("BoatSelect", 4, "PreviousFlag"));
                 }
                 else if(mouseIn(getWidth()/2+arrowsOffset,getHeight()/2,rarrow,me)){
-                    canvasManager.actionPerformed(new ActionEvent(this, 4, "NextFlag"));
+                    canvasManager.actionPerformed(new ActionEvent("BoatSelect", 4, "NextFlag"));
                 }
                 else if(mouseIn(getWidth()/2,getHeight()/2+buttonOffset,gobutton,me)){
                     canvasManager.actionPerformed(new ActionEvent(this, 0, "Game"));
@@ -89,7 +95,7 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
 
             @Override
             public void mousePressed(MouseEvent me) {
-                mouseClicked(me);
+                //
             }
 
             @Override
@@ -125,8 +131,12 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
     public void paint(Graphics g) {
         super.paint(g);
         
-        g.setColor(Color.BLUE);
-        g.fillRect(0,0,width,height);
+        //g.setColor(Color.BLUE);
+        //g.fillRect(0,0,width,height);
+//        for(Esquadra e: Esquadra.values())
+//                names+=e.name()+" ";
+//        names+=flags.size();
+        g.drawString(names,30, 30);
         g.drawImage(flag, getWidth()/2-flag.getWidth()/2, getHeight()/2-flag.getHeight(), this);
         g.drawImage(larrow, getWidth()/2-flag.getWidth()/2-arrowsOffset, getHeight()/2-flag.getHeight(), this);
         g.drawImage(rarrow, getWidth()/2-flag.getWidth()/2+arrowsOffset, getHeight()/2-flag.getHeight(), this);
@@ -137,6 +147,25 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         //throw new UnsupportedOperationException("Not supported yet.");
+        String cmd = e.getActionCommand();
+        if(cmd.equals("NextFlag")){
+            if(flagIterator.hasNext()){
+                flag = flagIterator.next();
+            }else{
+                flagIterator=flags.listIterator();
+                flag = flagIterator.next();
+            }
+        }
+        else if(cmd.equals("PreviousFlag")){
+            if(flagIterator.hasPrevious())
+                flag = flagIterator.previous();
+            else {
+                while(flagIterator.hasNext())
+                    flagIterator.next();
+                flag = flagIterator.previous();
+            }
+        }
+        repaint();
     }
     
 }

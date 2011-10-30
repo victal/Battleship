@@ -57,7 +57,7 @@ public class TitleScreen extends ActiveCanvas{
                 boolean ys = me.getY()>(yjogar-jogar.getHeight()/2);
                 boolean yg = me.getY()<(yjogar+jogar.getHeight()/2);
                 if(xs&&xg&&ys&&yg){
-                    canvasManager.actionPerformed(new ActionEvent(this, 0, "Game"));
+                    canvasManager.actionPerformed(new ActionEvent(this, 0, "BoatSelect"));
                 }
             }
 

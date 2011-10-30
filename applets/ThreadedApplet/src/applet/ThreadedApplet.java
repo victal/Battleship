@@ -19,7 +19,7 @@ import java.util.HashMap;
  * @author guilherme
  */
 public class ThreadedApplet extends Applet implements Runnable,ActionListener{
-   final int OK=0,FAIL=1,CANCEL=2;
+   final int OK=0,FAIL=1,CANCEL=2,INTERNAL=4;
    HashMap<String,ActiveCanvas> panels;
    StringBuffer buffer;
    BufferedImage barco;
@@ -79,6 +79,9 @@ public class ThreadedApplet extends Applet implements Runnable,ActionListener{
                 ActiveCanvas c = new GameScreen(15,15);
                 panels.put("Game",c);
                 thisPanel.add("Game", c);
+                c = new BoatChooseScreen(this);
+                panels.put("BoatSelect",c);
+                thisPanel.add("BoatSelect", c);
                 t.sleep(1000);
             } catch (InterruptedException ex) {
             }
@@ -91,6 +94,9 @@ public class ThreadedApplet extends Applet implements Runnable,ActionListener{
         if(ae.getID()==OK){
             panels.get(cmd).init();
             cl.show(thisPanel, cmd);
+        }
+        else if(ae.getID()==INTERNAL){
+            
         }
     }
 }

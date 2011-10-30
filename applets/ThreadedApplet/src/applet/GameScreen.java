@@ -4,9 +4,9 @@
  */
 package applet;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 public class GameScreen extends ActiveCanvas{
 
     BufferedImage barco;
+    String esquadra="ENG";
     //Diagrama do tabuleiro de Jogo:
     //Top: 30 px para título e letras do tabuleiro
     //Left: 20 px para números do Tabuleiro
@@ -32,15 +33,15 @@ public class GameScreen extends ActiveCanvas{
         this.width=20+30*columns;
         this.height=30*(rows+1);
     }
-    
+    @Override
+    public void init() {}    
     @Override
     public void paint(Graphics g){
         super.paint(g);
         this.setSize(width, height);
         try {
-            barco = ImageIO.read(new File("images/ENG-BATTLESHIP.png"));
-        } catch (IOException ex) {
-        }
+            barco = ImageIO.read(new File("images/"+esquadra+"-BATTLESHIP.png"));
+        } catch (IOException ex) {}
         g.setColor(Color.gray);
         g.fillRect(0, 0, WIDTH, HEIGHT);
         g.setColor(Color.BLACK);
@@ -54,28 +55,15 @@ public class GameScreen extends ActiveCanvas{
         for(int i =30;i<getHeight() - 1;i+=30){
            g.drawLine(20, i,getWidth()-1,i);
         }
-        //fundo.getSubimage(0, 0, 30, fundo.getHeight());
         g.drawImage(barco.getSubimage(0, 0, 30, barco.getHeight()), 20, 30,this);
         g.drawImage(barco.getSubimage(61, 0, barco.getWidth()-61, 30), 110, 120,this);
     }
-
-    @Override
-    public void init() {
-        //throw new UnsupportedOperationException("Not supported yet.");
+    public void setEsquadra(String e){
+        //esquadra = e;
     }
 
     @Override
-    public void start() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void stop() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void destroy() {
+    public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

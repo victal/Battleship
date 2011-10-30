@@ -11,14 +11,18 @@ import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author guilherme
  */
 public class ThreadedApplet extends Applet implements Runnable,ActionListener{
-   final int OK=0,FAIL=1,CANCEL=2,INTERNAL=4;
+   final int OK=0,FAIL=1,CANCEL=2,COMM=4;
    HashMap<String,ActiveCanvas> panels;
    StringBuffer buffer;
    BufferedImage barco;
@@ -93,15 +97,23 @@ public class ThreadedApplet extends Applet implements Runnable,ActionListener{
         //OK -> Ir para o próximo painel,
         //com nome especificado no ActionCommand.
         if(ae.getID()==OK){
-            //panels.get(cmd).init();
+            //Adicionar quando um método start se mostrar necessário
+            //panels.get(cmd).start();
             cl.show(thisPanel, cmd);
         }
-        //Caso seja uma mensagem INTERNAL -> de algo interno ao canvas para o canvas
-        //Passar o "nome" do Canvas como source.
-        else if(ae.getID()==INTERNAL){
-            ActiveCanvas a = panels.get((String)src);
-            if(a instanceof ActionListener)
-                ((ActionListener)a).actionPerformed(new ActionEvent(src, INTERNAL, cmd));
+        else if(ae.getID()==COMM){
+            String[] command = ae.getActionCommand().split("[.]");
+            if(command.length==3){
+                ActiveCanvas c = panels.get(command[0]);
+                for(Method i:c.getClass().getMethods())
+                    if(i.getName().equals(command[1]))
+                        try {
+                    i.invoke(c, command[2]);
+                } catch (IllegalAccessException ex) {
+                } catch (IllegalArgumentException ex) {
+                } catch (InvocationTargetException ex) {
+                }
+            }
         }
     }
 }

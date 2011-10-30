@@ -80,30 +80,17 @@ public class TitleScreen extends ActiveCanvas{
             }
         });
     }
-
-    @Override
-    public void start() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void stop() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void destroy() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         
-//        g.setColor(Color.);
-//        g.fillRect(0,0,width,height);
         g.drawImage(logo, xlogo,ylogo, this);
         g.drawImage(jogar, xjogar,yjogar, this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

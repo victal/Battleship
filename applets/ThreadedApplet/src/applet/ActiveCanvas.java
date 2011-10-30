@@ -12,13 +12,14 @@ import java.awt.event.ActionListener;
  *
  * @author guilherme
  */
-public abstract class ActiveCanvas extends Canvas {
+public abstract class ActiveCanvas extends Canvas implements ActionListener {
     public ActionListener canvasManager=null;
     public abstract void init();
-    public abstract void start();
-    public abstract void stop();
-    public abstract void destroy();
-    public  void paint(Graphics g){
+    //public abstract void start();
+    //public abstract void stop();
+    //public abstract void destroy();
+    @Override
+    public void paint(Graphics g){
         super.paint(g);
     }
     

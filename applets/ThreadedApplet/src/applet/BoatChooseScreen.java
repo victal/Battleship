@@ -60,8 +60,8 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
     public void init() {
         this.setSize(width, height);
         try {    
-            rarrow = ImageIO.read(new File("images/flags/rightarrow.jpg"));
-            larrow = ImageIO.read(new File("images/flags/leftarrow.jpg"));
+            rarrow = ImageIO.read(new File("images/flags/rightarrow.png"));
+            larrow = ImageIO.read(new File("images/flags/leftarrow.png"));
             gobutton = ImageIO.read(new File("images/go.png"));
             arrowsOffset = 100;
             buttonOffset = 100;

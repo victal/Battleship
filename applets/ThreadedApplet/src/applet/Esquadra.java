@@ -13,7 +13,7 @@ import java.util.HashMap;
 public enum Esquadra {
     ENG,CHI,USA,GER;
     
-    //private HashMap<Boat,Integer> qtdes;
+    private HashMap<Boat,Integer> qtdes;
 
     
 

@@ -9,7 +9,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ListIterator;
 import javax.imageio.ImageIO;
-import javax.swing.event.ChangeEvent;
 
 
 /**
@@ -82,6 +80,26 @@ public class BoatChooseScreen extends ActiveCanvas implements ActionListener{
                     canvasManager.actionPerformed(new ActionEvent(this, 4, "Game.setEsquadra."+flags.get(flag)));
                     canvasManager.actionPerformed(new ActionEvent(this, 0, "Game"));
                 }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
+                throw new UnsupportedOperationException("Not supported yet.");
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                throw new UnsupportedOperationException("Not supported yet.");
             }
         });
     }

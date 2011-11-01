@@ -13,7 +13,7 @@ import java.awt.image.BufferedImage;
  *
  * @author Guilherme Victal
  */
-public class CanvasMouseListener implements MouseListener{
+public abstract class CanvasMouseListener implements MouseListener{
     private ActiveCanvas owner;
 
     public ActiveCanvas getOwner() {
@@ -33,15 +33,10 @@ public class CanvasMouseListener implements MouseListener{
                 boolean yg = (yinit+i.getHeight())>=me.getY();
                 return xs&&xg&&ys&&yg;
     }
-    @Override
-    public void mouseClicked(MouseEvent e) {}
-    @Override
-    public void mousePressed(MouseEvent e) {}
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    @Override
-    public void mouseExited(MouseEvent e) {}
+    public boolean mouseIn(int xinit,int yinit, int xend,int yend, MouseEvent me){
+                boolean x = (xinit)<=me.getX()&& xend<=me.getX();
+                boolean y = (yend)>=me.getY()&&yinit<=me.getY();
+                return x&&y;
+    }
     
 }
